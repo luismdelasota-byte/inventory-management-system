@@ -1,10 +1,8 @@
 package com.inventory.modules.categories.service;
 
 import com.inventory.common.exception.ConflictException;
-import com.inventory.common.exception.ResourceNotFoundException;
 import com.inventory.modules.categories.dto.CategoryResponseDto;
 import com.inventory.modules.categories.dto.CreateCategoryRequestDto;
-import com.inventory.modules.categories.dto.UpdateCategoryRequestDto;
 import com.inventory.modules.categories.entity.Category;
 import com.inventory.modules.categories.mapper.CategoryMapper;
 import com.inventory.modules.categories.repository.CategoryRepository;

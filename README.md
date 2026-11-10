@@ -2,6 +2,10 @@
 
 Aplicación web full-stack para administrar productos, categorías y existencias. Permite registrar entradas y salidas de inventario, consultar movimientos y alertas de stock, y administrar usuarios mediante roles.
 
+## Estado del proyecto
+
+Actualmente estoy trabajando en el despliegue de la aplicación para que pueda probarse en línea. Cuando esté disponible, agregaré aquí el enlace de acceso y las indicaciones necesarias para conocer sus funciones. Mientras tanto, es posible ejecutar el proyecto localmente siguiendo la guía de [Inicio local](#inicio-local).
+
 ## Funcionalidades
 
 - Inicio de sesión y consulta del perfil autenticado.

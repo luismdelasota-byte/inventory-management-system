@@ -2,9 +2,7 @@ package com.inventory.modules.users.service;
 
 import com.inventory.common.exception.BadRequestException;
 import com.inventory.common.exception.ConflictException;
-import com.inventory.common.exception.ResourceNotFoundException;
 import com.inventory.modules.users.dto.CreateUserRequestDto;
-import com.inventory.modules.users.dto.UpdateUserRequestDto;
 import com.inventory.modules.users.dto.UserResponseDto;
 import com.inventory.modules.users.entity.Role;
 import com.inventory.modules.users.entity.User;
@@ -46,13 +44,11 @@ class UserServiceTest {
     private UserServiceImpl userService;
 
     private Role adminRole;
-    private Role userRole;
     private User user;
 
     @BeforeEach
     void setUp() {
         adminRole = Role.builder().id(1L).name("ADMIN").build();
-        userRole = Role.builder().id(2L).name("INVENTORY_USER").build();
         user = User.builder()
                 .id(1L)
                 .fullName("Alex Morgan")

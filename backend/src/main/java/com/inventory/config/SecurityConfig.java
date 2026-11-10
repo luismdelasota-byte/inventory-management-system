@@ -1,6 +1,5 @@
 package com.inventory.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inventory.common.response.ApiResponse;
 import com.inventory.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +22,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import tools.jackson.databind.json.JsonMapper;
 
 @Configuration
 @EnableWebSecurity
@@ -32,6 +32,7 @@ public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final UserDetailsService userDetailsService;
+    private final JsonMapper jsonMapper;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -61,15 +62,13 @@ public class SecurityConfig {
                 .authenticationEntryPoint((request, response, authException) -> {
                     response.setStatus(HttpStatus.UNAUTHORIZED.value());
                     response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                    ObjectMapper mapper = new ObjectMapper();
-                    response.getWriter().write(mapper.writeValueAsString(
+                    response.getWriter().write(jsonMapper.writeValueAsString(
                             ApiResponse.error("Authentication required")));
                 })
                 .accessDeniedHandler((request, response, accessDeniedException) -> {
                     response.setStatus(HttpStatus.FORBIDDEN.value());
                     response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                    ObjectMapper mapper = new ObjectMapper();
-                    response.getWriter().write(mapper.writeValueAsString(
+                    response.getWriter().write(jsonMapper.writeValueAsString(
                             ApiResponse.error("Access denied: insufficient permissions")));
                 })
             );
@@ -79,8 +78,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
