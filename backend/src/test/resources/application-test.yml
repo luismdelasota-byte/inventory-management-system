@@ -1,0 +1,25 @@
+spring:
+  flyway:
+    enabled: false
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+app:
+  jwt:
+    secret: dGVzdC1zZWNyZXQta2V5LWZvci1pbnZlbnRvcnktbWFuYWdlbWVudC1zeXN0ZW0tdGVzdGluZy1vbmx5LWRvLW5vdC11c2UtaW4tcHJvZHVjdGlvbg==
+    expiration: 3600000
+  cors:
+    allowed-origins: http://localhost:5173
+  admin:
+    username: admin
+    email: admin@test.com
+    password: TestAdmin123!
+    full-name: Test Admin

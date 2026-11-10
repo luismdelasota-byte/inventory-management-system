@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: inventory-backend
+
+  profiles:
+    active: dev
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration: ${JWT_EXPIRATION:86400000}
+  cors:
+    allowed-origins: ${FRONTEND_URL:http://localhost:5173}
+  admin:
+    username: ${ADMIN_USERNAME:}
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}
+    full-name: ${ADMIN_FULL_NAME:}
