@@ -1,0 +1,39 @@
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Frontend: dependencies, build output, and caches
+/frontend/node_modules/
+/frontend/dist/
+/frontend/dist-ssr/
+/frontend/coverage/
+/frontend/.vite/
+
+# Backend: Maven build output
+/backend/target/
+
+# Editor and IDE files
+.vscode/*
+!.vscode/extensions.json
+**/.idea/
+**/*.iml
+**/.classpath
+**/.project
+**/.settings/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Visual Studio user files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
